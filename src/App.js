@@ -1,36 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-import MovieList from './components/MovieList';
+import TodoForm from './components/TodoForm';
+import Todo from './components/Todo'
 
 
-function Todo({ todo, index, completeTodo, removeTodo}){
-  return(
-    <div className='todo' style={{textDecoration: todo.isCompleted ? 'line-through' : ''}}>
-      {todo.text}
-      <div>
-        <button onClick={() => completeTodo(index)}>Complete</button>
-        <button onClick={() => removeTodo(index)}>Delete</button>
-      </div>
-    </div>
-  )
-}
 
-function TodoForm({addTodo}) {
-  const [value, setValue] = useState('');
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if(!value) return;
-    addTodo(value)
-    setValue('');
-  }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' placeholder='add todos' className='input' value={value} onChange={e => setValue(e.target.value)} />
-    </form>
-  )
-}
 
 function App() {
   const [todos, setTodos] = useState([
@@ -44,7 +20,7 @@ function App() {
   },
   {
     text: 'Learn python',
-    isCompleted: true
+    isCompleted: false
   }
 ])
 
